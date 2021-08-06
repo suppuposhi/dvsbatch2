@@ -1,0 +1,24 @@
+Pipeline{
+    agent any
+    parameters{
+        string defaultValue:'Devops',name:'Subject'
+        choice choices:['linux','hp-ux','aix','solaris'],name:'OS'
+    }
+    environment {
+        vra1 = 20
+    }
+    stages {
+        stage('my first stage') {
+            steps {
+               script {
+                   myvar1 = 100
+                   println "my Subject value is ${paramsSubject}"
+                   println "my OS value is ${params.OS}"
+                   println "accessing env var1 ${env.var1}"
+                   println "myvar1 value is ${myvar1}"
+               }
+            }
+        }
+
+    }
+}
